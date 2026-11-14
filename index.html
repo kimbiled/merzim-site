@@ -1,0 +1,1544 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173d35" />
+    <meta
+      name="description"
+      content="Рассчитать срок ответа госоргана Казахстана по заявлению, административной жалобе и запросу информации. С календарём и ссылками на нормы закона."
+    />
+    <title>Мерзім — сроки обращений в Казахстане</title>
+    <style>
+      :root {
+        --ink: #183c33;
+        --muted: #4c6259;
+        --line: #c4cfc4;
+        --paper: #f6f6ee;
+        --white: #fffff9;
+        --deep: #153e34;
+        --lime: #d8ef9f;
+        --warm: #f9e4bf;
+        --body: Inter, 'Source Sans 3', Arial, sans-serif;
+        --serif: 'PT Serif', Georgia, 'Times New Roman', serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 20px;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font: 16px/1.48 var(--body);
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      a {
+        color: inherit;
+        text-underline-offset: 4px;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      summary:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 3px solid #7c9132;
+        outline-offset: 3px;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      .wrap {
+        max-width: 1240px;
+        margin: auto;
+        padding: 0 clamp(20px, 4.2vw, 64px);
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+      .top {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        gap: 35px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: 750;
+        letter-spacing: -1.3px;
+      }
+      .logo img {
+        width: 36px;
+        height: 36px;
+      }
+      .top nav {
+        display: flex;
+        gap: 28px;
+        margin-left: auto;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .top nav a {
+        text-decoration: none;
+      }
+      .top nav a:hover,
+      .example:hover {
+        text-decoration: underline;
+      }
+      .country {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-left: 1px solid var(--line);
+        padding-left: 24px;
+        font-size: 12px;
+        letter-spacing: 0.035em;
+      }
+      .flag {
+        font-size: 11px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 2px 5px;
+        border-radius: 3px;
+        letter-spacing: 0.06em;
+        font-weight: 700;
+      }
+      .main {
+        display: grid;
+        grid-template-columns: minmax(0, 1.26fr) minmax(310px, 0.86fr);
+        gap: clamp(28px, 5vw, 76px);
+        align-items: start;
+        padding-top: 50px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        margin: 0;
+        color: var(--muted);
+      }
+      .eyebrow:before {
+        content: '';
+        display: inline-block;
+        width: 23px;
+        height: 2px;
+        background: #769046;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font: normal clamp(48px, 5.3vw, 77px)/0.99 var(--serif);
+        letter-spacing: -0.052em;
+        margin: 16px 0 17px;
+      }
+      h1 em {
+        font-weight: normal;
+        color: #4b714b;
+      }
+      .intro {
+        max-width: 540px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.52;
+      }
+      .form {
+        margin-top: 29px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+      .field,
+      .advanced label {
+        display: block;
+      }
+      .fieldname,
+      legend {
+        font-size: 14px;
+        color: var(--ink);
+        font-weight: 700;
+        padding: 0;
+      }
+      fieldset {
+        padding: 0;
+        border: 0;
+        margin: 0;
+      }
+      input[type='date'],
+      select {
+        display: block;
+        width: 100%;
+        height: 47px;
+        margin-top: 7px;
+        padding: 8px 11px;
+        min-width: 0;
+        background: var(--white);
+        color: var(--ink);
+        border: 1px solid #a6b5a7;
+        border-radius: 7px;
+        color-scheme: light;
+      }
+      select {
+        padding-right: 24px;
+      }
+      .help,
+      .note {
+        font-size: 13px;
+        line-height: 1.48;
+        color: var(--muted);
+      }
+      .help {
+        margin: 8px 0 0;
+      }
+      .dates {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 18px;
+      }
+      .advanced {
+        margin-top: 20px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      summary {
+        cursor: pointer;
+      }
+      summary::marker {
+        color: #586d45;
+      }
+      .advanced > summary,
+      .ledger > summary {
+        padding: 13px 0;
+        font-size: 14px;
+        font-weight: 650;
+      }
+      .options {
+        display: grid;
+        gap: 14px;
+        padding: 4px 0 15px;
+      }
+      .tick {
+        display: flex !important;
+        align-items: flex-start;
+        gap: 9px;
+        font-size: 14px;
+      }
+      .tick input {
+        margin: 3px 0 0;
+        accent-color: var(--deep);
+        width: 16px;
+        height: 16px;
+        flex: none;
+      }
+      .subfield {
+        margin: 6px 0 0 25px;
+      }
+      .actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-top: 18px;
+        flex-wrap: wrap;
+      }
+      .primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        background: var(--deep);
+        color: white;
+        border: 0;
+        border-radius: 7px;
+        font-weight: 650;
+        padding: 12px 17px;
+        font-size: 15px;
+      }
+      .primary:hover {
+        background: #245641;
+      }
+      .primary i {
+        font-style: normal;
+        font-size: 18px;
+        color: var(--lime);
+        line-height: 1;
+      }
+      .example {
+        border: 0;
+        background: transparent;
+        color: #386040;
+        padding: 10px 0;
+        font-weight: 650;
+        font-size: 14px;
+      }
+      .example:before {
+        content: '↺';
+        margin-right: 6px;
+      }
+      .right {
+        padding-top: 5px;
+        min-width: 0;
+      }
+      .calendar {
+        background: var(--deep);
+        border-radius: 17px;
+        color: #f5f8ed;
+        padding: 24px clamp(18px, 2.6vw, 32px) 20px;
+        box-shadow: 0 3px 0 #cedab8;
+        overflow: hidden;
+      }
+      .cal-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .cal-name {
+        color: #e0ebd5;
+        font-size: 12px;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        font-weight: 650;
+      }
+      .cal-icon {
+        width: 25px;
+        height: 25px;
+        display: grid;
+        align-content: center;
+        gap: 3px;
+        transform: rotate(-9deg);
+      }
+      .cal-icon i {
+        display: block;
+        width: 22px;
+        height: 4px;
+        background: var(--lime);
+        transform: skew(-25deg);
+      }
+      .cal-icon i:nth-child(2) {
+        width: 16px;
+      }
+      .cal-icon i:nth-child(3) {
+        width: 10px;
+      }
+      .due-title {
+        font: normal clamp(28px, 3.3vw, 46px)/1.1 var(--serif);
+        letter-spacing: -0.047em;
+        margin-top: 13px;
+      }
+      .cal-note {
+        font-size: 13px;
+        color: #d1dfcf;
+        margin: 5px 0 19px;
+        min-height: 1.48em;
+      }
+      .month-head {
+        border-top: 1px solid #547064;
+        padding-top: 17px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 15px;
+        font-weight: 650;
+      }
+      .month-nav {
+        display: flex;
+        gap: 7px;
+      }
+      .month-nav button {
+        background: transparent;
+        color: white;
+        border: 1px solid #6a8377;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        line-height: 1;
+        padding: 0;
+        font-size: 19px;
+      }
+      .month-nav button:disabled {
+        opacity: 0.34;
+        cursor: default;
+      }
+      .month-nav button:hover:enabled {
+        background: #33604c;
+      }
+      .week,
+      .grid-calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+      }
+      .week {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #bfd0c1;
+        margin: 15px 0 4px;
+      }
+      .grid-calendar {
+        grid-auto-rows: 32px;
+        align-items: center;
+      }
+      .day {
+        width: 30px;
+        height: 28px;
+        line-height: 28px;
+        justify-self: center;
+        font-size: 13px;
+        font-variant-numeric: tabular-nums;
+        border-radius: 7px;
+        color: #f5f8ee;
+      }
+      .day.off {
+        color: #abc2b6;
+      }
+      .day.is-counted {
+        background: #335d4d;
+      }
+      .day.is-origin {
+        border: 1px solid #dbe8d1;
+        line-height: 26px;
+      }
+      .day.is-due {
+        background: var(--lime);
+        color: #163a2e;
+        font-weight: 750;
+      }
+      .day.today:not(.is-due):not(.is-origin) {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      .cal-legend {
+        display: flex;
+        gap: 11px;
+        flex-wrap: wrap;
+        border-top: 1px solid #4e6e5e;
+        margin-top: 13px;
+        padding-top: 13px;
+        font-size: 11px;
+        color: #dce6d8;
+      }
+      .cal-legend span {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+      .key {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+      }
+      .key.origin {
+        border: 1px solid #dbe8d1;
+      }
+      .key.counted {
+        background: #426e5b;
+      }
+      .key.end {
+        background: var(--lime);
+      }
+      .side-note {
+        display: flex;
+        gap: 9px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--muted);
+        margin: 15px 3px;
+      }
+      .rule {
+        background: #e9eedf;
+        border-radius: 8px;
+        padding: 13px 15px;
+        margin-top: 17px;
+        font-size: 14px;
+      }
+      .rule strong {
+        display: block;
+      }
+      .result {
+        margin-top: 30px;
+        scroll-margin-top: 22px;
+        padding: 24px;
+        background: #fffef8;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      .result h2,
+      .sources h2 {
+        font: normal 32px/1.16 var(--serif);
+        letter-spacing: -0.035em;
+      }
+      .status {
+        display: inline-block;
+        background: #dfedd1;
+        color: #254e35;
+        padding: 4px 9px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 11px;
+      }
+      .status.warn {
+        background: #f5e3bf;
+        color: #65451c;
+      }
+      .result p {
+        margin-top: 10px;
+      }
+      .result dl {
+        margin: 18px 0 0;
+      }
+      .result dt {
+        margin-top: 14px;
+        font-size: 13px;
+        font-weight: 750;
+      }
+      .result dd {
+        margin: 3px 0;
+        font-size: 15px;
+      }
+      .ledger {
+        margin-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+      .scroll-table {
+        overflow: auto;
+        max-height: 300px;
+      }
+      .ledger table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 13px;
+        text-align: left;
+      }
+      .ledger td,
+      .ledger th {
+        padding: 6px 4px;
+        border-bottom: 1px solid #e3e6db;
+      }
+      .ledger th {
+        background: #f3f5ea;
+        position: sticky;
+        top: 0;
+      }
+      .sources {
+        margin-top: 40px;
+        padding: 24px 0;
+        border-top: 1px solid var(--line);
+      }
+      .sources-head {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+      .sources h2 {
+        font-size: 28px;
+      }
+      .source-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 18px;
+      }
+      .source-grid a {
+        text-decoration: none;
+        display: block;
+        border-top: 2px solid #9aaf97;
+        padding-top: 8px;
+        font-size: 14px;
+        font-weight: 650;
+      }
+      .source-grid a:hover {
+        text-decoration: underline;
+      }
+      .source-grid small {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 400;
+        margin-top: 2px;
+      }
+      .source-grid b {
+        float: right;
+        font-weight: normal;
+      }
+      footer {
+        padding: 15px 0 24px;
+        border-top: 1px solid var(--line);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      noscript p {
+        padding: 15px;
+        background: var(--warm);
+      }
+      @media (max-width: 830px) {
+        .main {
+          gap: 24px;
+          grid-template-columns: minmax(0, 1.2fr) minmax(270px, 0.85fr);
+        }
+        .wrap {
+          padding-right: 22px;
+          padding-left: 22px;
+        }
+        .calendar {
+          padding: 19px 16px;
+        }
+        .dates {
+          grid-template-columns: 1fr;
+        }
+        .source-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 680px) {
+        .top {
+          height: 61px;
+          gap: 14px;
+        }
+        .top nav {
+          gap: 14px;
+          font-size: 13px;
+        }
+        .country {
+          display: none;
+        }
+        .main {
+          display: flex;
+          flex-direction: column;
+          padding-top: 26px;
+          gap: 24px;
+        }
+        .left,
+        .right {
+          width: 100%;
+        }
+        .form {
+          margin-top: 22px;
+        }
+        .right {
+          padding: 0;
+        }
+        .dates {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+        .fieldname {
+          font-size: 13px;
+        }
+        .intro {
+          font-size: 15px;
+        }
+        h1 {
+          font-size: clamp(44px, 11.5vw, 59px);
+        }
+        .right .calendar {
+          padding: 20px 22px;
+        }
+        .result {
+          padding: 17px;
+        }
+        .sources {
+          margin-top: 25px;
+        }
+        .sources-head,
+        .foot {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 5px;
+        }
+        .source-grid {
+          gap: 13px;
+        }
+        .sources h2 {
+          font-size: 25px;
+        }
+        .form .actions {
+          gap: 13px;
+        }
+        .week {
+          margin-top: 12px;
+        }
+        .grid-calendar {
+          grid-auto-rows: 31px;
+        }
+      }
+      @media (max-width: 380px) {
+        .dates {
+          grid-template-columns: 1fr;
+        }
+        .wrap {
+          padding-right: 16px;
+          padding-left: 16px;
+        }
+        .top nav {
+          gap: 10px;
+        }
+        .actions {
+          gap: 8px;
+        }
+        .source-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap top">
+        <a class="logo" href="#main" aria-label="Мерзім, к началу"
+          ><img
+            src="data:image/png;base64,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"
+            alt=""
+          />Мерзім</a
+        >
+        <nav aria-label="Навигация">
+          <a href="#calc">Калькулятор</a><a href="#sources">Источники</a>
+        </nav>
+        <span class="country"><span class="flag">KZ</span> Казахстан</span>
+      </div>
+    </header>
+    <main id="main" class="wrap">
+      <div class="main">
+        <section class="left" aria-labelledby="title">
+          <p class="eyebrow">Обращения граждан · РК</p>
+          <h1 id="title">Когда ждать<br /><em>ответ госоргана?</em></h1>
+          <p class="intro">
+            Укажите вид обращения и дату из квитанции. Калькулятор покажет
+            последний день срока и объяснит, как его посчитать.
+          </p>
+          <noscript
+            ><p>
+              Для расчёта включите JavaScript в браузере. Ссылки на законы
+              доступны ниже.
+            </p></noscript
+          >
+          <form id="calc" class="form">
+            <label class="field"
+              ><span class="fieldname">Вид обращения</span>
+              <select id="kind">
+                <option value="application">Заявление в госорган</option>
+                <option value="complaint">Административная жалоба</option>
+                <option value="info">Письменный запрос информации</option>
+                <option value="refusal">
+                  Отказ в предоставлении информации
+                </option>
+                <option value="other">
+                  Другой порядок или затрудняюсь выбрать
+                </option>
+              </select></label
+            >
+            <p class="help" id="kind-help"></p>
+            <div id="normal">
+              <div class="dates">
+                <label class="field"
+                  ><span id="start-label" class="fieldname"
+                    >Дата регистрации</span
+                  ><input type="date" id="start" aria-describedby="date-help"
+                /></label>
+                <label class="field"
+                  ><span class="fieldname">На какую дату проверить</span
+                  ><input type="date" id="asof" required
+                /></label>
+              </div>
+              <p class="help" id="date-help"></p>
+              <details class="advanced" id="more">
+                <summary>Перенаправление, продление или ответ</summary>
+                <div class="options">
+                  <div>
+                    <label class="tick"
+                      ><input type="checkbox" id="redirect" /><span
+                        >Обращение перенаправили</span
+                      ></label
+                    ><label class="subfield" id="received-field" hidden
+                      ><span class="fieldname" id="received-label"
+                        >Поступило компетентному органу</span
+                      ><input type="date" id="received"
+                    /></label>
+                  </div>
+                  <div>
+                    <label class="tick"
+                      ><input type="checkbox" id="extension" /><span
+                        >Есть уведомление о продлении</span
+                      ></label
+                    ><label class="subfield" id="extended-field" hidden
+                      ><span class="fieldname"
+                        >Новая дата из уведомления, если указана</span
+                      ><input type="date" id="extended"
+                    /></label>
+                  </div>
+                  <div>
+                    <label class="tick"
+                      ><input type="checkbox" id="resolved" /><span
+                        id="resolved-label"
+                        >Принято окончательное решение</span
+                      ></label
+                    ><label class="subfield" id="action-field" hidden
+                      ><span class="fieldname" id="action-label"
+                        >Дата решения</span
+                      ><input type="date" id="action"
+                    /></label>
+                  </div>
+                  <label class="tick"
+                    ><input type="checkbox" id="uncertain" /><span
+                      >Есть особый порядок или история обращения неполная</span
+                    ></label
+                  >
+                </div>
+              </details>
+            </div>
+            <div id="special" class="rule" hidden>
+              Для госуслуги, налогового, судебного или иного специального
+              порядка понадобится название процедуры и госоргана. Проверьте их в
+              квитанции, карточке услуги или тексте решения.
+            </div>
+            <div class="actions">
+              <button class="primary" type="submit">
+                Рассчитать срок <i aria-hidden="true">→</i></button
+              ><button type="button" class="example" id="demo">
+                Открыть пример
+              </button>
+            </div>
+          </form>
+          <section
+            class="result"
+            id="result"
+            aria-live="polite"
+            tabindex="-1"
+            hidden
+          ></section>
+        </section>
+        <aside class="right" aria-label="Календарь расчёта">
+          <div class="calendar">
+            <div class="cal-top">
+              <span class="cal-name">Календарь срока</span
+              ><span class="cal-icon" aria-hidden="true"
+                ><i></i><i></i><i></i
+              ></span>
+            </div>
+            <h2 class="due-title" id="due-title">Дата окончания</h2>
+            <p class="cal-note" id="cal-note">
+              Здесь появится результат расчёта.
+            </p>
+            <div class="month-head">
+              <span id="month" aria-live="polite"></span>
+              <div class="month-nav">
+                <button id="prev" type="button" aria-label="Предыдущий месяц">
+                  ‹</button
+                ><button id="next" type="button" aria-label="Следующий месяц">
+                  ›
+                </button>
+              </div>
+            </div>
+            <div class="week" aria-hidden="true">
+              <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span
+              ><span>ПТ</span><span>СБ</span><span>ВС</span>
+            </div>
+            <div class="grid-calendar" id="grid"></div>
+            <div class="cal-legend">
+              <span><i class="key origin"></i>Исходная дата</span
+              ><span><i class="key counted"></i>В учёте</span
+              ><span><i class="key end"></i>Последний день</span>
+            </div>
+          </div>
+          <p class="side-note">
+            Календарь пятидневной рабочей недели Казахстана на 2026 год.
+          </p>
+        </aside>
+      </div>
+      <section class="sources" id="sources">
+        <div class="sources-head">
+          <h2>Правовые источники</h2>
+          <span class="note">Проверены 14 ноября 2026 года</span>
+        </div>
+        <div class="source-grid">
+          <a
+            href="https://adilet.zan.kz/rus/docs/K2000000350"
+            target="_blank"
+            rel="noopener noreferrer"
+            >АППК РК <b>↗</b><small>Статьи 64, 65, 76, 91 и 99</small></a
+          >
+          <a
+            href="https://adilet.zan.kz/rus/docs/Z1500000401"
+            target="_blank"
+            rel="noopener noreferrer"
+            >О доступе к информации <b>↗</b><small>Статья 11</small></a
+          >
+          <a
+            href="https://adilet.zan.kz/rus/docs/Z1600000480"
+            target="_blank"
+            rel="noopener noreferrer"
+            >О правовых актах <b>↗</b><small>Статья 14, пункт 3</small></a
+          >
+          <a
+            href="https://www.gov.kz/article/33969?lang=ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Календарь Казахстана <b>↗</b><small>Праздники и переносы</small></a
+          >
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap foot">
+        <span>Мерзім · Справочный расчёт по встроенным правилам</span
+        ><span>Введённые даты обрабатываются в браузере.</span>
+      </div>
+    </footer>
+    <script>
+      /* RK five-day working calendar, checked 2026-11-14. UTC avoids browser timezone shifts. */
+      const MerzimCalendar = (() => {
+        const DAY = 86400000;
+        const holidays = {
+          '01-01': 'Новый год',
+          '01-02': 'Новый год',
+          '01-07': 'Рождество',
+          '03-08': 'Международный женский день',
+          '03-09': 'Перенос выходного за 8 марта',
+          '03-21': 'Наурыз',
+          '03-22': 'Наурыз',
+          '03-23': 'Наурыз',
+          '03-24': 'Перенос выходного за 21 марта',
+          '03-25': 'Перенос выходного за 22 марта',
+          '05-01': 'Праздник единства народа Казахстана',
+          '05-07': 'День защитника Отечества',
+          '05-09': 'День Победы',
+          '05-11': 'Перенос выходного за 9 мая',
+          '05-27': 'Курбан айт',
+          '07-06': 'День столицы',
+          '10-25': 'День Республики',
+          '10-26': 'Перенос выходного за 25 октября',
+          '12-16': 'День Независимости',
+        };
+        const rules = {
+          application: { days: 15, unit: 'work' },
+          complaint: { days: 20, unit: 'work' },
+          info: { days: 15, unit: 'calendar' },
+          refusal: { days: 5, unit: 'work' },
+        };
+        function iso(stamp) {
+          return new Date(stamp).toISOString().slice(0, 10);
+        }
+        function stamp(value) {
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(value))
+            throw Error('Укажите полную дату.');
+          const n = Date.parse(value + 'T00:00:00Z');
+          if (!Number.isFinite(n) || iso(n) !== value)
+            throw Error('Проверьте дату.');
+          return n;
+        }
+        function off(value) {
+          if (!value.startsWith('2026-'))
+            throw Error(
+              'Для этого периода нужен календарь другого года. В файл включён проверенный календарь пятидневки за 2026 год.',
+            );
+          const weekday = new Date(stamp(value)).getUTCDay();
+          return (
+            holidays[value.slice(5)] ||
+            ([0, 6].includes(weekday) ? 'Выходной' : '')
+          );
+        }
+        function calculate(kind, start) {
+          const rule = rules[kind];
+          if (!rule) throw Error('Сначала определите применимый порядок.');
+          const dates = [];
+          let current = stamp(start);
+          off(start);
+          let count = 0;
+          while (count < rule.days) {
+            current += DAY;
+            const date = iso(current);
+            const reason = off(date);
+            const counted = rule.unit === 'calendar' || !reason;
+            if (counted) count++;
+            dates.push({
+              date,
+              reason,
+              counted,
+              number: counted ? count : null,
+            });
+          }
+          const nominal = iso(current);
+          while (off(iso(current))) {
+            current += DAY;
+            const date = iso(current);
+            dates.push({
+              date,
+              reason: off(date),
+              counted: false,
+              shift: true,
+            });
+          }
+          return { start, dates, nominal, due: iso(current), rule };
+        }
+        return { calculate, stamp, iso, off, DAY };
+      })();
+      if (typeof module !== 'undefined' && module.exports) {
+        module.exports = MerzimCalendar;
+        if (require.main === module) {
+          try {
+            const r = MerzimCalendar.calculate(
+              process.argv[2],
+              process.argv[3],
+            );
+            console.log(JSON.stringify(r, null, 2));
+          } catch (e) {
+            console.error(e.message);
+            process.exitCode = 1;
+          }
+        }
+      }
+    </script>
+    <script>
+      'use strict';
+      const el = (id) => document.getElementById(id);
+      const C = MerzimCalendar;
+      const MONTHS = [
+        'Январь',
+        'Февраль',
+        'Март',
+        'Апрель',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'Октябрь',
+        'Ноябрь',
+        'Декабрь',
+      ];
+      const today = new Intl.DateTimeFormat('sv-SE', {
+        timeZone: 'Asia/Almaty',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).format(new Date());
+      const dateFormat = new Intl.DateTimeFormat('ru-RU', {
+        timeZone: 'UTC',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      });
+      const shortFormat = new Intl.DateTimeFormat('ru-RU', {
+        timeZone: 'UTC',
+        day: 'numeric',
+        month: 'long',
+      });
+      const showDate = (val) => dateFormat.format(C.stamp(val));
+      const compact = (val) => shortFormat.format(C.stamp(val));
+      const official = {
+        app: ['АППК РК', 'https://adilet.zan.kz/rus/docs/K2000000350'],
+        info: [
+          'Закон «О доступе к информации»',
+          'https://adilet.zan.kz/rus/docs/Z1500000401',
+        ],
+        time: [
+          'Закон «О правовых актах», ст. 14, п. 3',
+          'https://adilet.zan.kz/rus/docs/Z1600000480',
+        ],
+      };
+      const types = {
+        application: {
+          hint: 'Вы просили госорган принять решение или совершить действие. Для конкретной госуслуги проверьте срок в её карточке.',
+          event: 'Дата регистрации',
+          where:
+            'Возьмите дату регистрации заявления из квитанции или карточки eOtinish.',
+          span: '15 рабочих дней',
+          law: 'app',
+          article: 'ст. 76, ч. 1, 2 и 5',
+          action: 'Дата принятия решения',
+          done: 'Принято окончательное решение',
+          extra:
+            'Мотивированное продление регулирует ч. 3 ст. 76 АППК. Проверьте дату решения, полномочия подписавшего и новую дату.',
+        },
+        complaint: {
+          hint: 'Вы уже подали жалобу на решение, действие или бездействие госоргана и ждёте её рассмотрения.',
+          event: 'Дата регистрации жалобы',
+          where:
+            'Укажите дату регистрации жалобы. Если её передали дальше, сверьте регистрацию в органе рассмотрения.',
+          span: '20 рабочих дней',
+          law: 'app',
+          article: 'ст. 99',
+          action: 'Дата решения по жалобе',
+          done: 'Принято решение по жалобе',
+          extra:
+            'Продление допустимо только в предусмотренном законом случае. Запросите конкретную норму и решение органа (ст. 99 АППК).',
+        },
+        info: {
+          hint: 'Вы письменно запросили уже существующие сведения или копию документа у госоргана, который ими располагает.',
+          event: 'Дата поступления запроса',
+          where:
+            'Укажите дату, когда письменный запрос поступил обладателю информации.',
+          span: '15 календарных дней',
+          law: 'info',
+          article: 'ст. 11, п. 10',
+          action: 'Дата предоставления ответа',
+          done: 'Получен ответ с информацией',
+          extra:
+            'Пункт 10 ст. 11 допускает однократное продление до 15 календарных дней, если сведения нужны от нескольких обладателей в предусмотренном законом случае. Уточните основание и дату уведомления.',
+        },
+        refusal: {
+          hint: 'Вы проверяете, вовремя ли вам сообщили мотивированный отказ по письменному запросу информации.',
+          event: 'Дата регистрации запроса',
+          where:
+            'Нужна дата регистрации запроса у обладателя информации, который отказал в её предоставлении.',
+          span: '5 рабочих дней',
+          law: 'info',
+          article: 'ст. 11, п. 17',
+          action: 'Дата сообщения отказа',
+          done: 'Мне сообщили мотивированный отказ',
+          extra:
+            'Для сообщения мотивированного отказа действует п. 17 ст. 11. Сверьте основание изменения этого срока с конкретной нормой.',
+        },
+        other: {
+          hint: 'Выберите этот вариант, если обращение связано с отдельной процедурой или его вид пока неясен.',
+        },
+      };
+      let shown = null;
+      let month = today.startsWith('2026-') ? Number(today.slice(5, 7)) - 1 : 0;
+      function node(tag, content, cls) {
+        const n = document.createElement(tag);
+        if (content !== undefined) n.textContent = content;
+        if (cls) n.className = cls;
+        return n;
+      }
+      function link(key, part) {
+        const [name, url] = official[key];
+        const a = node('a', part ? name + ', ' + part : name);
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        return a;
+      }
+      function calendar() {
+        el('month').textContent = MONTHS[month] + ' 2026';
+        el('prev').disabled = month === 0;
+        el('next').disabled = month === 11;
+        const grid = el('grid');
+        grid.replaceChildren();
+        const first = new Date(Date.UTC(2026, month, 1));
+        const offset = (first.getUTCDay() + 6) % 7;
+        for (let i = 0; i < offset; i++) grid.append(node('span'));
+        const days = new Date(Date.UTC(2026, month + 1, 0)).getUTCDate();
+        const counted = new Set(
+          shown ? shown.dates.filter((d) => d.counted).map((d) => d.date) : [],
+        );
+        for (let i = 1; i <= days; i++) {
+          const value = C.iso(Date.UTC(2026, month, i)),
+            why = C.off(value);
+          const cell = node('span', String(i), 'day');
+          const labels = [showDate(value), why || 'Рабочий день'];
+          if (why) cell.classList.add('off');
+          if (counted.has(value)) {
+            cell.classList.add('is-counted');
+            labels.push('Входит в срок');
+          }
+          if (shown?.start === value) {
+            cell.classList.add('is-origin');
+            labels.push('Исходная дата');
+          }
+          if (shown?.due === value) {
+            cell.classList.add('is-due');
+            labels.push('Последний день базового срока');
+          }
+          if (today === value) {
+            cell.classList.add('today');
+            labels.push('Сегодня');
+          }
+          cell.title = labels.join('. ');
+          cell.setAttribute('aria-label', cell.title);
+          grid.append(cell);
+        }
+      }
+      function resetPreview() {
+        shown = null;
+        el('result').hidden = true;
+        el('due-title').textContent = 'Дата окончания';
+        el('cal-note').textContent = 'Здесь появится результат расчёта.';
+        calendar();
+      }
+      function fields() {
+        const k = el('kind').value,
+          t = types[k],
+          special = k === 'other';
+        el('normal').hidden = special;
+        el('special').hidden = !special;
+        el('asof').disabled = special;
+        el('kind-help').textContent = t.hint;
+        el('calc').querySelector('.primary').firstChild.textContent = special
+          ? 'Что уточнить '
+          : 'Рассчитать срок ';
+        if (special) return;
+        el('start-label').textContent = t.event;
+        el('date-help').textContent = t.where;
+        el('action-label').textContent = t.action;
+        el('resolved-label').textContent = t.done;
+        el('received-label').textContent =
+          {
+            complaint: 'Дата регистрации в органе рассмотрения',
+            info: 'Дата поступления надлежащему обладателю',
+            refusal: 'Дата регистрации у надлежащего обладателя',
+          }[k] || 'Дата поступления компетентному органу';
+        for (const [check, field] of [
+          ['redirect', 'received-field'],
+          ['extension', 'extended-field'],
+          ['resolved', 'action-field'],
+        ])
+          el(field).hidden = !el(check).checked;
+      }
+      function mount(status, title, warn) {
+        const r = el('result');
+        r.replaceChildren(
+          node('span', status, 'status' + (warn ? ' warn' : '')),
+          node('h2', title),
+        );
+        r.hidden = false;
+        return r;
+      }
+      function row(dl, label, value) {
+        const dd = node('dd');
+        if (typeof value === 'string') dd.textContent = value;
+        else dd.append(value);
+        dl.append(node('dt', label), dd);
+      }
+      function laws(t, redirected = false) {
+        const s = node('span');
+        s.append(link(t.law, t.article));
+        if (redirected) {
+          const section =
+            el('kind').value === 'complaint'
+              ? 'ст. 91'
+              : t.law === 'info'
+                ? 'ст. 11, п. 11'
+                : 'ст. 65';
+          s.append(' · ', link(t.law, section));
+        }
+        s.append(
+          ' · ',
+          link('time'),
+          '. Редакция для расчёта сверена 14 ноября 2026 года.',
+        );
+        return s;
+      }
+      function showMissing(message, t) {
+        resetPreview();
+        const r = mount('Нужны сведения', 'Уточните обстоятельства', true);
+        r.append(node('p', message));
+        const dl = node('dl');
+        r.append(dl);
+        if (t.span) {
+          row(
+            dl,
+            'Предполагаемый срок',
+            t.span + ' по общему правилу для выбранного вида обращения.',
+          );
+          row(dl, 'Правовое основание', laws(t, el('redirect').checked));
+        } else {
+          row(
+            dl,
+            'Как выбрать правило',
+            'Просьба принять решение, жалоба на уже принятое решение и запрос копии документа рассматриваются по разным правилам. Для отдельной госуслуги найдите регламент в карточке услуги.',
+          );
+        }
+        row(
+          dl,
+          'Что сделать',
+          'Сверьте карточку обращения и уведомления. Для уточнения достаточно вида процедуры, названия органа и дат.',
+        );
+        r.focus({ preventScroll: true });
+        r.scrollIntoView({ block: 'nearest' });
+      }
+      function addLedger(r, calc) {
+        const details = node('details', undefined, 'ledger');
+        details.append(node('summary', 'Посмотреть расчёт по дням'));
+        const wrap = node('div', undefined, 'scroll-table'),
+          table = node('table'),
+          th = node('thead'),
+          head = node('tr');
+        ['Дата', 'Учёт дня'].forEach((s) => head.append(node('th', s)));
+        th.append(head);
+        table.append(th);
+        const body = node('tbody');
+        function add(date, description) {
+          const tr = node('tr');
+          tr.append(node('td', compact(date)), node('td', description));
+          body.append(tr);
+        }
+        add(calc.start, 'Исходное событие, день не входит в срок');
+        for (const d of calc.dates) {
+          let label = d.counted
+            ? 'День ' + d.number + (d.reason ? ' · ' + d.reason : '')
+            : d.reason;
+          if (d.shift)
+            label =
+              d.date === calc.due
+                ? 'Ближайший рабочий день, окончание срока'
+                : 'Перенос · ' + d.reason;
+          add(d.date, label);
+        }
+        table.append(body);
+        wrap.append(table);
+        details.append(wrap);
+        r.append(details);
+      }
+      function assess({ asof, due, action }) {
+        if (action) {
+          return action <= due
+            ? [
+                'Действие в пределах срока',
+                'По введённым датам действие совершено в пределах базового срока.',
+                false,
+              ]
+            : [
+                'Есть признаки просрочки',
+                'Дата указанного действия позже последнего дня базового срока. Сверьте документ и проверьте, применялся ли специальный срок.',
+                true,
+              ];
+        }
+        if (asof < due)
+          return [
+            'Срок ещё идёт',
+            'На дату проверки базовый срок ещё не закончился.',
+            false,
+          ];
+        if (asof === due)
+          return [
+            'Последний день',
+            'На дату проверки идёт последний день базового срока.',
+            false,
+          ];
+        return [
+          'Есть признаки просрочки',
+          'Базовый срок прошёл. Если орган не совершил предусмотренное действие и срок не менялся, возможна просрочка. Уточните дату решения и статус уведомления.',
+          true,
+        ];
+      }
+      function calculate(event) {
+        event?.preventDefault();
+        const k = el('kind').value,
+          t = types[k];
+        if (k === 'other')
+          return showMissing(
+            'Укажите, чего вы просили, кому направили обращение и какой порядок указан в квитанции. Без этого дату окончания определить нельзя.',
+            t,
+          );
+        const base = el('start').value,
+          asof = el('asof').value;
+        const redirect = el('redirect').checked,
+          extended = el('extension').checked,
+          resolved = el('resolved').checked,
+          unsure = el('uncertain').checked;
+        const origin = redirect ? el('received').value : base;
+        const action = resolved ? el('action').value : '',
+          notice = extended ? el('extended').value : '';
+        try {
+          if (!origin)
+            return showMissing(
+              redirect
+                ? 'Для перенаправленного обращения нужна дата из поля «' +
+                    el('received-label').textContent +
+                    '». Проверьте историю движения обращения.'
+                : t.where + ' Одна дата отправки не подтверждает начало срока.',
+              t,
+            );
+          C.stamp(origin);
+          C.stamp(asof);
+          if (base) C.stamp(base);
+          if (redirect && base && origin < base)
+            return showMissing(
+              'Дата у надлежащего адресата указана раньше исходной даты. Сверьте обе записи.',
+              t,
+            );
+          if (asof < origin)
+            return showMissing(
+              'Дата оценки предшествует событию, с которого начинается расчёт. Проверьте выбранные даты.',
+              t,
+            );
+          if (resolved && !action)
+            return showMissing(
+              'Укажите, когда было совершено окончательное действие: ' +
+                t.action.toLowerCase() +
+                '.',
+              t,
+            );
+          if (action && (action < origin || action > asof))
+            return showMissing(
+              'Дата окончательного действия должна находиться между исходной датой и датой оценки.',
+              t,
+            );
+          if (notice && notice < origin)
+            return showMissing(
+              'Дата из уведомления о продлении указана раньше исходного события. Сверьте уведомление.',
+              t,
+            );
+          const registered =
+            k === 'complaint' ||
+            k === 'refusal' ||
+            (k === 'application' && !redirect);
+          if (registered && C.off(origin))
+            return showMissing(
+              'По календарю пятидневки указанная дата регистрации — нерабочий день. Проверьте дату регистрации в карточке обращения и график органа. Даты отправки и регистрации могут различаться.',
+              t,
+            );
+          const calc = C.calculate(k, origin);
+          const qualified = extended || unsure;
+          const [status, assessment, warn] = qualified
+            ? [
+                'Требуется проверка',
+                extended
+                  ? t.extra
+                  : 'Особые правила или неполная история могут изменить срок. Для оценки нужна применимая норма и подтверждённые даты.',
+                true,
+              ]
+            : assess({ asof, due: calc.due, action });
+          const r = mount(
+            status,
+            (qualified ? 'Базовый срок — ' : 'До ') +
+              compact(calc.due) +
+              (qualified ? '' : ' включительно'),
+            warn,
+          );
+          const dl = node('dl');
+          r.append(dl);
+          row(
+            dl,
+            'Краткий ответ',
+            t.span +
+              ' по общему правилу.' +
+              (qualified ? ' Окончательную дату нужно уточнить.' : ''),
+          );
+          row(dl, 'Правовое основание', laws(t, redirect));
+          const counted = calc.dates.find((d) => d.counted);
+          let text =
+            (redirect ? el('received-label').textContent : t.event) +
+            ' — ' +
+            showDate(origin) +
+            '. Отсчёт со следующего дня. Первый учитываемый день — ' +
+            compact(counted.date) +
+            '. ';
+          text +=
+            calc.rule.unit === 'work'
+              ? 'Входят рабочие дни по пятидневке.'
+              : 'Входят все календарные дни. ';
+          if (calc.nominal !== calc.due)
+            text +=
+              ' ' +
+              compact(calc.nominal) +
+              ' — нерабочий день. Окончание переносится на ' +
+              compact(calc.due) +
+              '.';
+          row(dl, 'Расчёт срока', text);
+          row(
+            dl,
+            'Оценка на ' + compact(asof),
+            assessment +
+              (action ? ' ' + t.action + ' — ' + showDate(action) + '.' : '') +
+              (notice
+                ? ' В уведомлении указано ' +
+                  showDate(notice) +
+                  '. Основание и действительность продления требуют проверки.'
+                : ''),
+          );
+          row(
+            dl,
+            'Сведения для оценки',
+            qualified
+              ? extended
+                ? 'Нужны основание продления, дата решения и извещения, новый срок и сведения об окончательном ответе.'
+                : 'Уточните предмет обращения, специальный закон и движение по делу.'
+              : 'Введённых дат достаточно для базового расчёта при выбранных условиях.',
+          );
+          row(
+            dl,
+            'Следующий шаг',
+            qualified
+              ? 'Сверьте решение и специальную норму по официальному источнику.'
+              : action
+                ? 'Сохраните подтверждение регистрации и документ с датой окончательного действия.'
+                : 'Проверьте карточку обращения или запросите в канцелярии дату решения и сведения об отправке ответа.',
+          );
+          addLedger(r, calc);
+          shown = calc;
+          month = Number(calc.due.slice(5, 7)) - 1;
+          calendar();
+          el('due-title').textContent = compact(calc.due);
+          el('cal-note').textContent =
+            (qualified ? 'Базовый срок · ' : 'Последний день · ') + t.span;
+          r.focus({ preventScroll: true });
+          r.scrollIntoView({ block: 'nearest' });
+        } catch (e) {
+          showMissing(e.message, t);
+        }
+      }
+      el('asof').value = today;
+      el('kind').addEventListener('change', () => {
+        el('more').open = false;
+        for (const id of ['redirect', 'extension', 'resolved', 'uncertain'])
+          el(id).checked = false;
+        for (const id of ['received', 'extended', 'action', 'start'])
+          el(id).value = '';
+        fields();
+        resetPreview();
+      });
+      el('calc').addEventListener('input', (e) => {
+        if (e.target.id !== 'kind') {
+          fields();
+          resetPreview();
+        }
+      });
+      el('calc').addEventListener('submit', calculate);
+      el('demo').addEventListener('click', () => {
+        el('calc').reset();
+        el('kind').value = 'application';
+        el('start').value = '2026-11-02';
+        el('asof').value = '2026-11-24';
+        el('more').open = false;
+        fields();
+        calculate();
+      });
+      el('prev').addEventListener('click', () => {
+        if (month > 0) {
+          month--;
+          calendar();
+        }
+      });
+      el('next').addEventListener('click', () => {
+        if (month < 11) {
+          month++;
+          calendar();
+        }
+      });
+      fields();
+      calendar();
+    </script>
+  </body>
+</html>
